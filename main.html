@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifest Generator</title>
+    <link rel="stylesheet" href="./choigame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script src="./choigame.js"></script>
+    <script>
+        window.onload = () => {
+            const {
+                ver1,
+                ver2,
+                ver3,
+                mver1,
+                mver2,
+                mver3
+            } = document.forms.generator;
+            ver1.value = 1;
+            ver2.value = 0;
+            ver3.value = 0;
+            mver1.value = 1;
+            mver2.value = 19;
+            mver3.value = 40;
+            document.getElementById("output").innerHTML = "Not initialized yet...";
+            document.getElementById("nonedstr").innerHTML = `None`;
+        };
+        function test() {
+            setTimeout(async () => {
+                const data = await window.clipboardData.getData('Text');
+                console.log(data);
+            }, 5000)
+        }
+    </script>
+</head>
+<body>
+    <h1>Manifest Generator</h1><br><br>
+    <button type="button" class="dev_button" onclick="return devMode();">
+    Web make by: Choigame
+    <br>
+    Thank for visited
+    </button>
+    <br><br>
+    <form id="generator" class="generator">
+        <label>Pack name:</label>
+        <input type="text" maxlength="40" style="width:100%" id="name" placeholder="Enter name" />
+        <br><br>UUID:<button type="button" id="auto_uuid" class="button_block1" onclick="return updateUUID();">Click here to auto generate</button>
+        <br><input type="text" style="width:100%" maxlength="36" id="uuid" placeholder="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx" />
+        <br><br><label>Pack description:</label><br>
+        <textarea type="text" id="description" style="width:100%;"autofocus wrap="hard" rows="8">This is example of description, you can write one!</textarea>
+        <br><br><label>Package version:</label><br>
+        <input type="text" style="width:29%" maxlength="2" id="ver1" placeholder="1" />
+        <input type="text" style="width:30%" maxlength="2" id="ver2" placeholder="0" />
+        <input type="text" style="width:29%" maxlength="2" id="ver3" placeholder="0" />
+        <br><br><label>Min engine version:</label><br>
+        <input type="text" style="width:29%" maxlength="2" id="mver1" placeholder="1" />
+        <input type="text" style="width:30%" maxlength="2" id="mver2" placeholder="19" />
+        <input type="text" style="width:29%" maxlength="2" id="mver3" placeholder="40" />
+        <br><br><label>Pack type: </label><select id="pack_type" onchange="return onChangeType();">
+            <option value="r">Resouce Pack</option>
+            <option value="b">Behavior Pack</option>
+            <option value="s">Scripting Pack</option>
+            <option value="sb">Scripting + Behavior Pack</option>
+        </select>
+        <span id="entrypoint"></span>
+        <br><br>
+        <div class="box1">
+            <div class="box2"><span>Outside dependencies</span></div>
+            <br>
+            <div class="box3">
+                <label for="duuid">UUID:</label>
+                <br>
+                <input type="text" style="width:96%" maxlength="36" id="duuid" placeholder="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"/>
+                <br>
+                <label for="dver1">Version:</label>
+                <br>
+                <input type="text" style="width:29%" maxlength="2" id="dver1" placeholder="1"/>
+                <input type="text" style="width:29%" maxlength="2" id="dver2" placeholder="0"/>
+                <input type="text" style="width:29%" maxlength="2" id="dver3" placeholder="0"/>
+                <br><br>
+                <button class="button_block" type="button" id="dsubmit" onclick="return updateDepent();">Add dependency</button>
+            </div>
+            <br>
+            <div class="box4" id="noned">
+                <span id="nonedstr"/>
+            </div>
+            <span id="outd"/>
+        </div>
+        <br><br><button class="button_block" type="button" onclick="return onSubmit();">Submit</button>
+        <span id="download"></span>
+        <span id="error"></span>
+    </form>
+    <div style="text-align:center;">
+        <p style="font-size:20px;text-decoration:underline;">
+            <b>Output data:</b>
+        </p>
+    </div>
+    <pre id="output" class="output_box" />
+</body>
+</html>
