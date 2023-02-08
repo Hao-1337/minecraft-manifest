@@ -27,6 +27,7 @@
 
     <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script src="./choigame.js"></script>
@@ -56,22 +57,84 @@
             }, 5000)
         }
     </script>
-
+    <style>
+        .nav-bar {
+            right: 0;
+            top: 0;
+            width: 104.1%;
+            height: auto;
+            background-color: #2D302A;
+            border: solid 1px gray;
+            position: sticky;
+            transform: translate(-2.3%, -1px);
+            overflow: auto;
+            padding-bottom: 5px;
+        }
+        .nav-bar img {
+            padding: 4.5px 4.5px;
+        }
+        text {
+            text-align: center;
+            margin: 10px 0px;
+            top: 0px;
+        }
+        .nav-bar .nav-section {
+            padding: 5px;
+        }
+        .nav-bar .header {
+            float: left;
+            position: absolute;
+        }
+        .nav-section .box {
+            padding: 10px 20px;
+            border-top: solid 1px gray;
+        }
+        .box ol {
+            margin: 0px 0px;
+        }
+    </style>
     <title>Manifest Generator</title>
+    <script>
+        let state = false;
+        $(() => {
+            $(".nav-section").hide();
+            $(".nav-bar img").click((t) => {
+                if (!state) $(".nav-section").show(),
+                (state = true);
+                else $(".nav-section").hide(),
+                (state = false);
+            });
+        });
+    </script>
 </head>
 <body>
+    <div class="nav-bar">
+        <div class="header" style="text-align:center">
+            <img style="vertical-align:middle" src="./app-theme/n-icon.png">
+            <text style="vertical-align:middle">Minecraft Tools > Manifest Generator</text>
+        </div>
+        <br><br>
+        <div class="nav-section">
+            <div class="box">
+                <details>
+                    <summary>Minecraft Tools</summary>
+                    <ol>
+                        <li><text>Manifest Generator</text></li>
+                    </ol>
+                </details>
+            </div>
+        </div>
+    </div>
     <h1>Manifest Generator</h1><br><br>
     <button type="button" class="dev_button" onclick="return devMode();">
-    Web make by: Choigame
-    <br>
-    Source code: <a href="https://github.com/Choigame123/manifest-generator-web">Click Here</a>
-    <br>
-    Thank for visited
+        Web make by: Choigame
+        <br>
+        Vietnamese: Làm bởi Vũ Quang Hào
+        <br>
+        Source code: <a href="https://github.com/Choigame123/minecraft-manifest">Click Here</a>
+        <br>
+        Thank for visited
     </button>
-    <!--
-    <br>
-    <iframe style="padding-right: 12px;" width="640" height="360" src="https://hentaibar.com/embed/863" frameborder="0" allowfullscreen></iframe>
-    -->
     <br><br>
     <form id="generator" class="generator">
         <label>Pack name:</label>
