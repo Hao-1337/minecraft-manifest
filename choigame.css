@@ -7,6 +7,9 @@ body {
     margin-bottom: 20px;
     padding: 5px 12px;
 }
+a {
+    color: rgba(255, 145, 0, 0.848);
+}
 form {
     background-color: #CBFF97;
     color: #4D9A00 !important;
