@@ -7,6 +7,40 @@ body {
     margin-bottom: 20px;
     padding: 5px 12px;
 }
+.nav-bar {
+    right: 0;
+    top: 0;
+    width: 104.1%;
+    height: auto;
+    background-color: #2D302A;
+    border: solid 1px gray;
+    position: sticky;
+    transform: translate(-2.3%, -1px);
+    overflow: auto;
+    padding-bottom: 5px;
+}
+.nav-bar img {
+    padding: 4.5px 4.5px;
+}
+text {
+    text-align: center;
+    margin: 10px 0px;
+    top: 0px;
+}
+.nav-bar .nav-section {
+    padding: 5px;
+}
+.nav-bar .header {
+    float: left;
+    position: absolute;
+}
+.nav-section .box {
+    padding: 10px 20px;
+    border-top: solid 1px gray;
+}
+.box ol {
+    margin: 0px 0px;
+}
 a {
     color: rgba(255, 145, 0, 0.848);
 }
