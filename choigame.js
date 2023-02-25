@@ -34,7 +34,7 @@ updateForm = () => {
     (document.forms.generator.uuid_text.style.visibility = "hidden");
 },
 onChangeType = () => {
-    ["s","sb"].includes(document.forms.generator.pack_type.value) ? document.getElementById("entrypoint").innerHTML = `
+    ["s","sb"].includes(document.forms.generator.pack_type.value) ? _("entrypoint").innerHTML = `
     <br><br>
     <label>Entry for scripting pack:</label>
     <input type="text" id="entry" size="30" placeholder="EX: scripts/main.js"/>
@@ -66,7 +66,7 @@ onChangeType = () => {
     <input type="checkbox" id="mc_server_admin"/>
     <label for="mc_server_admin">minecraft/server-admin</label>
     </div>
-    `: document.getElementById("entrypoint").innerHTML = ``;
+    `: _("entrypoint").innerHTML = ``;
 },
 updateUUID = () => {
     document.forms.generator.uuid.value = UUIDGen();
@@ -115,8 +115,8 @@ updateDHTML = () => {
     </div>
     </div>
     `;
-    document.getElementById("noned").style.display = outside_depent.length > 0 ? "none" : "block";
-    document.getElementById("outd").innerHTML = html;
+    _("noned").style.display = outside_depent.length > 0 ? "none" : "block";
+    _("outd").innerHTML = html;
 },
 removeDepent = index => {
     console.log(index);
@@ -192,7 +192,7 @@ fullManifestGen = (is_script = false) => {
     assign_depent = {};
     let dependent = [];
     if (name.value === "" || uuid.value === "") {
-        document.getElementById("error").innerHTML = `
+        _("error").innerHTML = `
         <br>
         <div class="generator_error">
         <span style="font-size:20px">ERROR</span>
@@ -201,9 +201,9 @@ fullManifestGen = (is_script = false) => {
         </div>
         `;
         return "error";
-    } else document.getElementById("error").innerHTML = "";
+    } else _("error").innerHTML = "";
     if (["s", "sb"].some(v => v === type) && !mc1 && !mc2 && !mc3 && !mc4 && !mc5) {
-        document.getElementById("error").innerHTML = `
+        _("error").innerHTML = `
         <br>
         <div class="generator_error">
         <span style="font-size:20px">ERROR</span>
@@ -212,9 +212,9 @@ fullManifestGen = (is_script = false) => {
         </div>
         `;
         return "error";
-    } else document.getElementById("error").innerHTML = "";
+    } else _("error").innerHTML = "";
     if (!uuid.value.isV4UUID()) {
-        document.getElementById("error").innerHTML = `
+        _("error").innerHTML = `
         <br>
         <div class="generator_error">
         <span style="font-size:20px">ERROR</span>
@@ -223,9 +223,9 @@ fullManifestGen = (is_script = false) => {
         </div>
         `;
         return "error";
-    } else document.getElementById("error").innerHTML = "";
+    } else _("error").innerHTML = "";
     if (!ver1.value.isPositiveNumber() || !ver2.value.isPositiveNumber() || !ver3.value.isPositiveNumber() || !mver1.value.isPositiveNumber() || !mver2.value.isPositiveNumber() || !mver3.value.isPositiveNumber()) {
-        document.getElementById("error").innerHTML = `
+        _("error").innerHTML = `
         <br>
         <div class="generator_error">
         <span style="font-size:20px">ERROR</span>
@@ -234,9 +234,9 @@ fullManifestGen = (is_script = false) => {
         </div>
         `;
         return "error";
-    } else document.getElementById("error").innerHTML = "";
+    } else _("error").innerHTML = "";
     if (["s", "sb"].some(v => v === type) && entry.value === "") {
-        document.getElementById("error").innerHTML = `
+        _("error").innerHTML = `
         <br>
         <div class="generator_error">
         <span style="font-size:20px">ERROR</span>
@@ -245,9 +245,9 @@ fullManifestGen = (is_script = false) => {
         </div>
         `;
         return "error";
-    } else document.getElementById("error").innerHTML = "";
+    } else _("error").innerHTML = "";
     if (["s", "sb"].some(v => v === type) && !entry.value.startsWith("scripts/")) {
-        document.getElementById("error").innerHTML = `
+        _("error").innerHTML = `
         <br>
         <div class="generator_error">
         <span style="font-size:20px">ERROR</span>
@@ -256,7 +256,7 @@ fullManifestGen = (is_script = false) => {
         </div>
         `;
         return "error";
-    } else document.getElementById("error").innerHTML = "";
+    } else _("error").innerHTML = "";
     if (type === "b" || type === "sb") modules.push(behaviorPackGen());
     else modules.push(resoucePackGen());
     if (type === "s" || type === "sb") {
@@ -287,7 +287,7 @@ fullManifestGen = (is_script = false) => {
 },
 onSubmit = () => {
     const data = fullManifestGen(),
-    output = document.getElementById("output");
+    output = _("output");
     if (data === "error") return;
     output.innerHTML = `
 <div class="box6">
@@ -319,17 +319,17 @@ devMode = () => {
     }
 },
 updateFormat = () => {
-    const indent = document.getElementById("indent"),
-          codespace = document.getElementById("codespace"),
-          format = document.getElementById("format"),
-          ilabel = document.getElementById("ilabel");
+    const indent = _("indent"),
+          codespace = _("codespace"),
+          format = _("format"),
+          ilabel = _("ilabel");
     if (+`${indent.value}` > 8) {
         alert(`Tab space so big! Please enter a smaller number (<= 8)`);
         indent.value = 4;
         return;
     }
     codespace.innerHTML = `
-        <code class="language-json">${JSON.stringify(global_scope, {type: "text/json"}, (document.getElementById("format").checked ? +`${indent.value}` : 0))}</code>
+        <code class="language-json">${JSON.stringify(global_scope, {type: "text/json"}, (_("format").checked ? +`${indent.value}` : 0))}</code>
     `;
     indent.style.display = format.checked ? "inline" : "none";
     ilabel.style.display = format.checked ? "inline" : "none";
@@ -337,7 +337,7 @@ updateFormat = () => {
     output.cols = 50;
 },
 parseFormat = (obj) => {
-    if (!document.getElementById("format").checked) return obj;
+    if (!_("format").checked) return obj;
     if (typeof obj !== "object") return obj;
     const type = Array.isArray(obj) ? [] : {};
     for (const key in obj) type[key] = typeof obj == "object" ? parseFormat(obj[key]) : obj[key];
@@ -345,7 +345,7 @@ parseFormat = (obj) => {
 },
 saveJsonFile = (name, data) => {
     const blob = new Blob(
-        [JSON.stringify(parseFormat(data), void 0, (document.getElementById("format").checked ? +`${document.getElementById("indent").value}` : 0))],
+        [JSON.stringify(parseFormat(data), void 0, (_("format").checked ? +`${_("indent").value}` : 0))],
         {type: "text/json"}
     ),
     link = document.createElement("a");
@@ -362,7 +362,7 @@ saveJsonFile = (name, data) => {
 },
 coppyToClipboard = (text = JSON.stringify(global_scope, {
     type: "text/json"
-}, (document.getElementById("format").checked ? +`${document.getElementById("indent").value}` : 0))) => navigator.clipboard.writeText(text),
+}, (_("format").checked ? +`${_("indent").value}` : 0))) => navigator.clipboard.writeText(text),
 getCheckBoxByID = checkboxid => {
-    return document.getElementById(checkboxid).checked;
+    return _(checkboxid).checked;
 };
