@@ -31,20 +31,6 @@
     <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script src="./choigame.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/fold/foldcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/fold/foldgutter.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/fold/foldgutter.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/tomorrow-night-bright.min.css">
-    <link rel="stylesheet" href="./navigation.css">
-    <style>
-        .CodeMirror {
-            width: 100%;
-            border: 2px solid #505050;
-        }
-    </style>
     <title>Manifest Generator</title>
     <script>
         let state = false,
@@ -81,6 +67,28 @@
             }, 5000)
         }
     </script>
+    <style>
+        .dev_button {
+            padding-left: 20px;
+        }
+        .tt h2 {
+            text-align: center;
+            margin: auto 8px;
+            color: #CA502A;
+            text-decoration: underline;
+        }
+        .tt h5 {
+            text-align: right;
+            color: darkgreen;
+            margin: 0px 0px;
+        }
+        .tt {
+           color: #DBB531
+        }
+        body h1 {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="nav-bar">
@@ -115,17 +123,17 @@
             </div>
         </div>
     </div>
-    <h1>Manifest Generator</h1><br><br>
-    <button type="button" class="dev_button" onclick="return devMode();">
-        Web make by: Choigame
-        <br>
-        Vietnamese: Làm bởi Vũ Quang Hào
-        <br>
-        Source code: <a href="https://github.com/Choigame123/minecraft-manifest">Click Here</a>
-        <br>
-        Thank for visited
-    </button>
+    <h1>Manifest Generator</h1>
     <br><br>
+    <label class="dev_button" onclick="devMode()">
+        Made by: Choigame(Vũ Quang Hào)
+    </label>
+    <br>
+    <label class="dev_button">
+        Source code: <u onClick="window.open(&#34;https://github.com/Choigame123/minecraft-manifest&#34;)">Click Here</u>
+    </label>
+    <br>
+    <br>
     <form id="generator" class="generator">
         <label>Pack name:</label>
         <input type="text" maxlength="40" style="width:100%" id="name" placeholder="Enter name" />
@@ -182,5 +190,35 @@
         </p>
     </div>
     <pre id="output" class="output_box" />
+
+           <!-- Uhhhhhhh nothing to see -->
+
+<div class="tt" style="padding: 20px 10px">
+<h2>Minecraft Manifest Create</h2>
+<span>
+    - Have you ever agonized about the problem of creating a manifest, it is quite annoying. That's why this website right here now.
+</span>
+<br>
+<br>
+<h2>How to use this tool</h2>
+<span>
+    - Simple to use, just enter the required requirements and you will get your json, press `Submit` and get the results right away. You can copy to clipboard or download it.
+</span>
+<br>
+<br>
+<h2>Important Note</h2>
+<span>
+    - Everything here is a preview, there may be bugs. If you find a bug, you can create an issue on the project's official github page.
+</span>
+<br>
+<span>
+    - Thank for visited
+<br>
+<br>
+<h5>
+    (Web của con gà 🐿️)
+</h5>
+</span>
+</div>
 </body>
 </html>
