@@ -367,6 +367,8 @@ coppyToClipboard = (text = JSON.stringify(global_scope, {
 getCheckBoxByID = checkboxid => {
     return _(checkboxid).checked;
 };
+
+
 function storageAvailable(type) {
   let storage;
   try {
@@ -379,10 +381,14 @@ function storageAvailable(type) {
     return (e instanceof DOMException && (e.code === 22 || e.code === 1014 || e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED") && storage && storage.length !== 0);
   }
 }
+function cookiesEnabled() {
+    document.cookie = "testcookie=true";
+    const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
+    document.cookie = "testcookie=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    return cookiesEnabled;
+}
 
 let storage;
 function setup() {
-    if (storageAvailable("localStorage")) {
-        
-    }
+    if (!storageAvailable("localStorage")) return console.warn("Local storage not available!");
 }
