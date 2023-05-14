@@ -4,6 +4,7 @@ String.prototype.isV4UUID = function() {
 String.prototype.isPositiveNumber = function() {
     return this.match(/\d+/)?.[0].length === this.length && +`${this}` < 100;
 }
+
 let global_scope = {},
 outside_depent = [],
 devc = 0;
@@ -366,60 +367,41 @@ coppyToClipboard = (text = JSON.stringify(global_scope, {
 getCheckBoxByID = checkboxid => {
     return _(checkboxid).checked;
 };
-function storageAvailable(type) {
-    let storage;
-    try {
-      storage = window[type];
-      const x = "__storage_test__";
-      storage.setItem(x, x);
-      storage.removeItem(x);
-      return true;
-    } catch (e) {
-      return (e instanceof DOMException && (e.code === 22 || e.code === 1014 || e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED") && storage && storage.length !== 0);
+let storage = window.localStorage;
+
+class Database {
+    error = false;
+    constructor() {
+        if (!storageAvailable("localStorage")) {
+            error = true;
+            return console.warn("Local storage not available!");
+        }
+        return this;
     }
-  }
-  function cookiesEnabled() {
-      document.cookie = "testcookie=true";
-      const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
-      document.cookie = "testcookie=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-      return cookiesEnabled;
-  }
-  
-  let storage = window.localStorage;
-  
-  class Database {
-      error = false;
-      constructor() {
-          if (!storageAvailable("localStorage")) {
-              error = true;
-              return console.warn("Local storage not available!");
-          }
-          return this;
-      }
-      get isEnabled() {
-          return !this.error;
-      }
-      set isEnabled(_) {
-          throw new SyntaxError("isEnabled is read-only");
-      }
-      set(key, vaule) {
-          return storage.setItem(key, value);
-      }
-      get(key) {
-          return storage.getItem(key);
-      }
-      remove(key) {
-          if (this.get(key) === null) return false;
-          return this.removeItem(key);
-      }
-      replace(key, vaule) {
-          if (this.get(key) === null) return false;
-          this.remove(key);
-          return this.set(key, vaule);
-      }
-      forEach(func) {
-          for (let i = 0; i < storage.length; i++) func(this.get(storage.key(i)));
-      }
-  }
-  
-  window.database = new Database();
+    get isEnabled() {
+        return !this.error;
+    }
+    set isEnabled(_) {
+        throw new SyntaxError("isEnabled is read-only");
+    }
+    set(key, vaule) {
+        return storage.setItem(key, value);
+    }
+    get(key) {
+        return storage.getItem(key);
+    }
+    remove(key) {
+        if (this.get(key) === null) return false;
+        return this.removeItem(key);
+    }
+    replace(key, vaule) {
+        if (this.get(key) === null) return false;
+        this.remove(key);
+        return this.set(key, vaule);
+    }
+    forEach(func) {
+        for (let i = 0; i < storage.length; i++) func(this.get(storage.key(i)));
+    }
+}
+
+window.database = new Database();
