@@ -8,9 +8,9 @@ body {
     height: 100%;
     
     padding: 0px;
-    margin-left: 0pc;
+    margin-left: 0px;
     margin-right: 0px;
-    margin-top: 8%;
+    margin-top: 5.5%;
     margin-bottom: 5%;
 
     flex-direction: column;
@@ -34,7 +34,7 @@ body:not(.no-center, #nav) {
     background-color: rgba(0, 0, 0, 0.5);
     width: 90%;
     max-width: 650px;
-    height: 88%;
+    height: 85%;
     overflow: auto;
     overflow-y: scroll;
     z-index: 1;
