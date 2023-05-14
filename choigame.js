@@ -369,24 +369,24 @@ getCheckBoxByID = checkboxid => {
 };
 
 function storageAvailable(type) {
-  let storage;
-  try {
-    storage = window[type];
-    const x = "__storage_test__";
-    storage.setItem(x, x);
-    storage.removeItem(x);
-    return true;
-  } catch (e) {
-    return (e instanceof DOMException && (e.code === 22 || e.code === 1014 || e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED") && storage && storage.length !== 0);
+    let storage;
+    try {
+      storage = window[type];
+      const x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return (e instanceof DOMException && (e.code === 22 || e.code === 1014 || e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED") && storage && storage.length !== 0);
+    }
   }
-}
-function cookiesEnabled() {
-    document.cookie = "testcookie=true";
-    const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
-    document.cookie = "testcookie=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    return cookiesEnabled;
-}
-
+  function cookiesEnabled() {
+      document.cookie = "testcookie=true";
+      const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
+      document.cookie = "testcookie=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      return cookiesEnabled;
+  }
+  
 let storage = window.localStorage;
 
 class Database {
