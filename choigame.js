@@ -39,7 +39,7 @@ onChangeType = () => {
     <label>Entry for scripting pack:</label>
     <input type="text" id="entry" size="30" placeholder="EX: scripts/main.js"/>
     <br><br>
-    <label>Scripts eval allow to use <b><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">new Function()</a></b> and <b><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">eval()</b></a>:</label>
+    <label>Scripts eval allow to use <b><u onclick="window.open(&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function&#34;)">new Function()</u></b> and <b><u href="window.open(&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval&#34;)">eval()</u></b>:</label>
     <br>
     <input type="checkbox" id="script_eval" checked/>
     <label for="script_eval">Scripts eval</label>
@@ -366,3 +366,60 @@ coppyToClipboard = (text = JSON.stringify(global_scope, {
 getCheckBoxByID = checkboxid => {
     return _(checkboxid).checked;
 };
+function storageAvailable(type) {
+    let storage;
+    try {
+      storage = window[type];
+      const x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return (e instanceof DOMException && (e.code === 22 || e.code === 1014 || e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED") && storage && storage.length !== 0);
+    }
+  }
+  function cookiesEnabled() {
+      document.cookie = "testcookie=true";
+      const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
+      document.cookie = "testcookie=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      return cookiesEnabled;
+  }
+  
+  let storage = window.localStorage;
+  
+  class Database {
+      error = false;
+      constructor() {
+          if (!storageAvailable("localStorage")) {
+              error = true;
+              return console.warn("Local storage not available!");
+          }
+          return this;
+      }
+      get isEnabled() {
+          return !this.error;
+      }
+      set isEnabled(_) {
+          throw new SyntaxError("isEnabled is read-only");
+      }
+      set(key, vaule) {
+          return storage.setItem(key, value);
+      }
+      get(key) {
+          return storage.getItem(key);
+      }
+      remove(key) {
+          if (this.get(key) === null) return false;
+          return this.removeItem(key);
+      }
+      replace(key, vaule) {
+          if (this.get(key) === null) return false;
+          this.remove(key);
+          return this.set(key, vaule);
+      }
+      forEach(func) {
+          for (let i = 0; i < storage.length; i++) func(this.get(storage.key(i)));
+      }
+  }
+  
+  window.database = new Database();

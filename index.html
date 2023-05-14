@@ -83,104 +83,137 @@
     </script>
 </head>
 <body>
-    <div class="nav-bar">
-        <div class="header" style="text-align:center">
-            <img style="vertical-align:middle" src="./app-theme/n-icon.png">
-            <text style="vertical-align:middle">Minecraft Tools > Manifest Generator</text>
-        </div>
-        <br><br>
-        <div class="nav-section">
-            <div class="header-box">
-                <text style=""> Other Tools </text>
+    <div id="nav">
+        <nav class="nav-bar">
+            <div class="header" style="text-align:center">
+                <img style="vertical-align:middle" src="./app-theme/n-icon.png">
+                <text style="vertical-align:middle">Minecraft Tools > Manifest Generator</text>
             </div>
-            <div class="nb-box">
-                <details>
-                    <summary>Minecraft Tools</summary>
-                    <ol>
-                        <!-- https://choigame123.github.io/minecraft-manifest/ -->
-                        <li onclick="$(&#34;.nav-section&#34;).hide(), (state = false)"><u>Manifest Generator</u></li>
-                    </ol>
-                </details>
+            <br><br>
+            <div class="nav-section">
+                <div class="header-box">
+                    <text style=""> Other Tools </text>
+                </div>
+                <div class="nb-box">
+                    <details>
+                        <summary>Minecraft Tools</summary>
+                        <ol>
+                            <!-- https://choigame123.github.io/minecraft-manifest/ -->
+                            <li onclick="$(&#34;.nav-section&#34;).hide(), (state = false)"><u>Manifest Generator</u></li>
+                        </ol>
+                    </details>
+                </div>
+                <div class="box">
+                    <details>
+                        <summary>Json Tools</summary>
+                        <ol>
+                            <li onclick="window.open(&#34;https://choigame123.github.io/json-obfuscate&#34;)"><u>Json Obfuscate</u></li>
+                            <li onclick="window.open(&#34;&#34;)"><u>Json Deobfuscate</u></li>
+                            <li onclick="window.open(&#34;&#34;)"><u>Json Minify</u></li>
+                            <li onclick="window.open(&#34;&#34;)"><u>Json Beautify</u></li>
+                        </ol>
+                    </details>
+                </div>
             </div>
-            <div class="box">
-                <details>
-                    <summary>Json Tools</summary>
-                    <ol>
-                        <li onclick="window.open(&#34;https://choigame123.github.io/json-obfuscate&#34;)"><u>Json Obfuscate</u></li>
-                        <li onclick="window.open(&#34;&#34;)"><u>Json Deobfuscate</u></li>
-                        <li onclick="window.open(&#34;&#34;)"><u>Json Minify</u></li>
-                        <li onclick="window.open(&#34;&#34;)"><u>Json Beautify</u></li>
-                    </ol>
-                </details>
-            </div>
-        </div>
+        </nav>
     </div>
-    <h1>Manifest Generator</h1><br><br>
-    <button type="button" class="dev_button" onclick="return devMode();">
-        Web make by: Choigame
-        <br>
-        Vietnamese: Làm bởi Vũ Quang Hào
-        <br>
-        Source code: <a href="https://github.com/Choigame123/minecraft-manifest">Click Here</a>
-        <br>
-        Thank for visited
-    </button>
-    <br><br>
-    <form id="generator" class="generator">
-        <label>Pack name:</label>
-        <input type="text" maxlength="40" style="width:100%" id="name" placeholder="Enter name" />
-        <br><br>UUID:<button type="button" id="auto_uuid" class="button_block1" onclick="return updateUUID();">Click here to auto generate</button>
-        <br><input type="text" style="width:100%" maxlength="36" id="uuid" placeholder="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx" />
-        <br><br><label>Pack description:</label><br>
-        <textarea type="text" id="description" style="width:100%;"autofocus wrap="hard" rows="8">This is example of description, you can write one!</textarea>
-        <br><br><label>Package version:</label><br>
-        <input type="number" style="width:29%" maxlength="2" id="ver1" placeholder="EX: 1" />
-        <input type="number" style="width:30%" maxlength="2" id="ver2" placeholder="EX: 0" />
-        <input type="number" style="width:29%" maxlength="2" id="ver3" placeholder="EX: 0" />
-        <br><br><label>Min engine version:</label><br>
-        <input type="number" style="width:29%" maxlength="2" id="mver1" placeholder="EX: 1" />
-        <input type="number" style="width:30%" maxlength="2" id="mver2" placeholder="EX: 19" />
-        <input type="number" style="width:29%" maxlength="2" id="mver3" placeholder="EX: 40" />
-        <br><br><label>Pack type: </label><select id="pack_type" onchange="return onChangeType();">
-            <option value="r">Resouce Pack</option>
-            <option value="b">Behavior Pack</option>
-            <option value="s">Scripting Pack</option>
-            <option value="sb">Scripting + Behavior Pack</option>
-        </select>
-        <span id="entrypoint"></span>
+    <div id="float">
+        <h1>Manifest Generator</h1>
         <br><br>
-        <div class="box1">
-            <div class="box2">
-                <span>Outside dependencies</span>
-            </div>
+        <div class="tt" style="padding: 20px 10px">
+            <h3>Minecraft manifest generator:</h2>
+            <p>
+                - Have you ever agonized about the problem of creating a manifest, it is quite annoying. That's why this website right here now.
+            </p>
             <br>
-            <div class="box3">
-                <label for="duuid">UUID:</label>
+            <br>
+            <h3>How to use this tool:</h3>
+            <p>
+                - Simple to use, just enter the required requirements and you will get your json, press `Submit` and get the results right away. You can copy to clipboard or download it.
+            </p>
+            <br>
+            <br>
+            <h3>Note:</h3>
+            <p>
+                - Everything here is a preview, there may be bugs. If you find a bug, you can create an issue on the project's official github page.
+            </p>
+            <br>
+            <p id="last">
+                - Thank for visited
                 <br>
-                <input type="text" style="width:96%" maxlength="36" id="duuid" placeholder="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx" />
                 <br>
-                <label for="dver1">Version:</label>
-                <br>
-                <input type="number" style="width:29%" maxlength="2" id="dver1" placeholder="EX: 1" />
-                <input type="number" style="width:29%" maxlength="2" id="dver2" placeholder="EX: 0" />
-                <input type="number" style="width:29%" maxlength="2" id="dver3" placeholder="EX: 0" />
+                <h5>
+                    (Web của con gà 🐿️)
+                </h5>
+            </p>
+        </div>
+        <div class="no-center">
+            <label class="dev_button1" onclick="devMode()">
+                Made by: Choigame(Vũ Quang Hào)
+            </label>
+            <br>
+            <label class="dev_button2">
+                Source code: <u onClick="window.open(&#34;https://github.com/Choigame123/minecraft-manifest&#34;)">Click Here</u>
+            </label>
+            <br>
+            <br>
+            <form id="generator" class="generator">
+                <label>Pack name:</label>
+                <input type="text" maxlength="40" style="width:100%" id="name" placeholder="Enter name" />
+                <br><br>UUID:<button type="button" id="auto_uuid" class="button_block1" onclick="return updateUUID();">Click here to auto generate</button>
+                <br><input type="text" style="width:100%" maxlength="36" id="uuid" placeholder="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx" />
+                <br><br><label>Pack description:</label><br>
+                <textarea type="text" id="description" style="width:100%;"autofocus wrap="hard" rows="8">This is example of description, you can write one!</textarea>
+                <br><br><label>Package version:</label><br>
+                <input type="number" style="width:29%" maxlength="2" id="ver1" placeholder="EX: 1" />
+                <input type="number" style="width:30%" maxlength="2" id="ver2" placeholder="EX: 0" />
+                <input type="number" style="width:29%" maxlength="2" id="ver3" placeholder="EX: 0" />
+                <br><br><label>Min engine version:</label><br>
+                <input type="number" style="width:29%" maxlength="2" id="mver1" placeholder="EX: 1" />
+                <input type="number" style="width:30%" maxlength="2" id="mver2" placeholder="EX: 19" />
+                <input type="number" style="width:29%" maxlength="2" id="mver3" placeholder="EX: 40" />
+                <br><br><label>Pack type: </label><select id="pack_type" onchange="return onChangeType();">
+                    <option value="r">Resouce Pack</option>
+                    <option value="b">Behavior Pack</option>
+                    <option value="s">Scripting Pack</option>
+                    <option value="sb">Scripting + Behavior Pack</option>
+                </select>
+                <span id="entrypoint"></span>
                 <br><br>
-                <button class="button_block" type="button" id="dsubmit" onclick="return updateDepent();">Add dependency</button>
+                <div class="box1">
+                    <div class="box2">
+                        <span>Outside dependencies</span>
+                    </div>
+                    <br>
+                    <div class="box3">
+                        <label for="duuid">UUID:</label>
+                        <br>
+                        <input type="text" style="width:96%" maxlength="36" id="duuid" placeholder="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx" />
+                        <br>
+                        <label for="dver1">Version:</label>
+                        <br>
+                        <input type="number" style="width:29%" maxlength="2" id="dver1" placeholder="EX: 1" />
+                        <input type="number" style="width:29%" maxlength="2" id="dver2" placeholder="EX: 0" />
+                        <input type="number" style="width:29%" maxlength="2" id="dver3" placeholder="EX: 0" />
+                        <br><br>
+                        <button class="button_block" type="button" id="dsubmit" onclick="return updateDepent();">Add dependency</button>
+                    </div>
+                    <br>
+                    <div class="box4" id="noned">
+                        <span id="nonedstr" />
+                    </div>
+                    <span id="outd" />
+                </div>
+                <br><br><button class="button_block" type="button" onclick="return onSubmit();">Submit</button>
+                <span id="error"></span>
+            </form>
+            <div style="text-align:center;">
+                <p style="font-size:20px;text-decoration:underline;">
+                    <b>Output data:</b>
+                </p>
             </div>
-            <br>
-            <div class="box4" id="noned">
-                <span id="nonedstr" />
-            </div>
-            <span id="outd" />
+            <pre id="output" class="output_box" />
         </div>
-        <br><br><button class="button_block" type="button" onclick="return onSubmit();">Submit</button>
-        <span id="error"></span>
-    </form>
-    <div style="text-align:center;">
-        <p style="font-size:20px;text-decoration:underline;">
-            <b>Output data:</b>
-        </p>
     </div>
-    <pre id="output" class="output_box" />
 </body>
 </html>

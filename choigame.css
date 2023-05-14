@@ -1,11 +1,103 @@
 body {
+    background-image: url('./app-theme/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 120%;
+    padding: auto;
+    flex-direction: column;
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 0px;
+    margin-top: 50px;
     background-color: #191919;
     color: #50A000;
     font-size: 15px;
     max-width: 500px;
-    margin: auto;
-    margin-bottom: 20px;
     padding: 5px 12px;
+}
+body:not(.no-center, #nav) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#float {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 660px;
+    height: 99%;
+    overflow: auto;
+    z-index: 1;
+    padding: 2%;
+    align-items: inherit;
+    text-align: left;
+    justify-content: inherit;
+    display: block;
+}
+#nav {
+    text-align: left;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    background-color: #2D302A;
+    border: solid 1px gray;
+    position: fixed;
+    overflow: hidden;
+    padding-bottom: 5px;
+    z-index: 2;
+}
+.dev_button {
+    padding-left: 20px;
+}
+.tt h3 {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: left;
+    color: #CA502A;
+    margin: auto 0px;
+    text-decoration: underline;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-left: 1%;
+}
+.tt h5 {
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: right;
+    color: darkgreen;
+    margin: 0px 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.tt {
+    color: #DBB531
+}
+.tt p {
+    background-color: rgba(0, 0, 0, 0.6);
+    background-size: 100% 100%;
+    top: 0;
+    left: 0;
+    width: auto;
+    margin: auto 0px;
+    height: auto;
+    z-index: -1;
+    padding-left: 5%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.tt p#last {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+body h1 {
+    margin-bottom: 5px;
 }
 form {
     background-color: #CBFF97;
@@ -16,7 +108,7 @@ textarea, input, select, button {
     border: 2px solid #505050;
     color: #A8A8A8;
     font-size: 14px;
-    background-color: #1B1B1B;
+    background-color: rgba(0, 0, 0, 0.65);
     border-radius: 3px;
     border-radius: 2px;
 }
@@ -60,11 +152,6 @@ body h1 {
     padding: 8px 8px;
     background-color: #282c34 !important;
     border-radius: 2px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-.output_box::-webkit-scrollbar {
-    display: none;
 }
 .box1 {
     border: 2px solid #505050;
@@ -157,71 +244,29 @@ body h1 {
     font-size: 15px;
     text-decoration: underline;
 }
-.dev_button {
+.dev_button1 {
+    padding-bottom: none;
+    padding-top: 10px;
+    padding-left: 1%;
     width: auto;
     height: auto;
     border: none;
-    background-color: #191919;
+    background-color: rgba(0, 0, 0, 0.65);
     text-align: left;
     color: skyblue;
+    padding-right: 5%;
     font-size: 15px;
 }
-/*This use for toggle*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 80px;
-    height: 34px
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .8s;
-    transition: .8s
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: #fff;
-    -webkit-transition: .8s;
-    transition: .8s
-}
-
-input:checked+.slider {
-    background-color: #2569D3
-}
-
-input:focus+.slider {
-    box-shadow: 0 0 1px #2569D3
-}
-
-input:checked+.slider:before {
-    -webkit-transform: translateX(45px);
-    -ms-transform: translateX(45px);
-    transform: translateX(45px)
-}
-
-.slider.round {
-    border-radius: 36px
-}
-
-.slider.round:before {
-    border-radius: 50%
+.dev_button2 {
+    padding-bottom: 10px;
+    padding-top: none;
+    width: auto;
+    height: auto;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.65);
+    text-align: left;
+    color: skyblue;
+    padding-right: 5%;
+    padding-left: 1%;
+    font-size: 15px;
 }
