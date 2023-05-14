@@ -1,11 +1,11 @@
 body {
     background-image: url('./app-theme/background.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
 
     width: 100%;
     max-width: 650px;
-    height: 100%;
+    height: 120%;
     
     padding: 0px;
     margin-left: 0px;
@@ -34,7 +34,7 @@ body:not(.no-center, #nav) {
     background-color: rgba(0, 0, 0, 0.5);
     width: 90%;
     max-width: 650px;
-    height: 85%;
+    height: 90%;
     overflow: auto;
     overflow-y: scroll;
     z-index: 1;
