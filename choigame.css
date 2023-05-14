@@ -33,6 +33,7 @@ body:not(.no-center, #nav) {
     max-width: 660px;
     height: 99%;
     overflow: auto;
+    overflow-y: scroll;
     z-index: 1;
     padding: 2%;
     align-items: inherit;
@@ -40,14 +41,35 @@ body:not(.no-center, #nav) {
     justify-content: inherit;
     display: block;
 }
+.output_box {
+    outline: 2px solid green;
+    height: auto;
+    min-height: 320px;
+    max-height: 680px;
+    overflow-y: scroll;
+    padding: 8px 8px;
+    background-color: #282c34 !important;
+    border-radius: 2px;
+}
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 1em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 1em;
+}
 #nav {
     text-align: left;
     right: 0;
     top: 0;
     width: 100%;
     height: auto;
-    background-color: #2D302A;
-    border: solid 1px gray;
     position: fixed;
     overflow: hidden;
     padding-bottom: 5px;
@@ -142,16 +164,6 @@ body h1 {
     text-align: center;
     border-radius: 6px;
     color: #AC0007;
-}
-.output_box {
-    outline: 2px solid green;
-    height: auto;
-    min-height: 320px;
-    max-height: 680px;
-    overflow-y: scroll;
-    padding: 8px 8px;
-    background-color: #282c34 !important;
-    border-radius: 2px;
 }
 .box1 {
     border: 2px solid #505050;
