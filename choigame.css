@@ -1,7 +1,7 @@
 body {
     background-image: url('./app-theme/desketop-background.jpg');
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
 
     width: 100%;
     max-width: 650px;
@@ -23,7 +23,7 @@ body {
   body {
     background-image: url('./app-theme/phone-background.jpg');
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
   }
 }
 body:not(.no-center, #nav) {
