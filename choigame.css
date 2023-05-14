@@ -12,15 +12,12 @@ body {
 
     flex-direction: column;
 
-    background-color: #191919;
     color: #50A000;
     font-size: 15px;
 }
-@media only screen and (max-width: 1024px) and (max-aspect-ratio: 22/9) {
+@media only screen and (max-width: 1024px) and (max-aspect-ratio: 21/9) {
   body {
     background-image: url('./app-theme/phone-background.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
   }
 }
 body:not(.no-center, #nav) {
