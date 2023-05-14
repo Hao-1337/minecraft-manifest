@@ -1,14 +1,14 @@
 .nav-bar {
     right: 0;
     top: 0;
-    width: 104.1%;
+    width: 100%;
     height: auto;
-    background-color: #2D302A;
-    border: solid 1px gray;
     position: sticky;
-    transform: translate(-2.3%, -5px);
     overflow: hidden;
     padding-bottom: 5px;
+    background-color: #2D302A;
+    border: solid 1px gray;
+    padding-left: 2%;
 }
 .nav-bar img {
     padding: 4.5px 4.5px;
